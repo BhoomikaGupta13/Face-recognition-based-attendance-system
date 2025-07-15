@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+facenet-pytorch
+torch
+numpy
+opencv-python
+jinja2
+python-jose
+qdrant-client
+tenacity
+python-multipart
