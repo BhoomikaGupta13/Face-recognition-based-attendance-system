@@ -23,5 +23,5 @@ Designed with scalability in mind, the system integrates deep learning for facia
 ### 1. 📥 Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/face-attendance-system.git
-cd face-attendance-system
+git clone https://github.com/BhoomikaGupta13/Face-recognition-based-attendance-system.git
+cd Face-recognition-based-attendance-system
