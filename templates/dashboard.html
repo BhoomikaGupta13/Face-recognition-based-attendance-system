@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Attendance System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/static/main.js" defer></script>
+</head>
+<body class="flex h-screen bg-gray-100">
+    <!-- Side Panel -->
+    <div class="w-64 bg-gray-800 text-white p-4 flex flex-col">
+        <h2 class="text-lg font-semibold mb-4">Control Panel</h2>
+        
+        <div class="mb-6">
+            <h3 class="font-medium mb-2">Camera Management</h3>
+            <ul id="cameraList" class="space-y-1">
+                <!-- Cameras will be populated here -->
+            </ul>
+            <button id="addCameraBtn" class="mt-2 w-full bg-blue-600 hover:bg-blue-700 text-white py-1 px-3 rounded">
+                Add Camera
+            </button>
+            <button id="attendanceViewBtn" class="mt-4 w-full bg-gray-200 hover:bg-indigo-500 hover:text-white text-gray-800 font-semibold py-2 px-3 rounded transition duration-200 shadow-sm">
+                View Attendance
+            </button>
+            
+
+        </div>
+        
+        <!-- Removed Recognition Settings as per user request -->
+        
+        <!-- <div class="flex-1 overflow-auto">
+            <h3 class="font-medium mb-2">Recent Attendance (Last 2 minutes)</h3>
+            <ul id="recentAttendance" class="space-y-2">
+            </ul>
+        </div> -->
+    </div>
+    
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col">
+        <header class="bg-white shadow-sm p-4 flex justify-between items-center">
+            <h1 class="text-xl font-semibold">Live Camera Feed</h1>
+            <div class="flex space-x-4">
+                <button id="startCameraBtn" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">
+                    Start Camera
+                </button>
+                <button id="logoutBtn" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">
+                    Logout
+                </button>
+            </div>
+        </header>
+        
+        <div class="flex-1 p-4 bg-black flex items-center justify-center">
+            <img id="cameraFeed" class="w-full h-full object-contain" alt="Camera feed" src="https://placehold.co/600x400/000000/FFFFFF?text=Camera+Feed+Stopped">
+        </div>
+        
+        <!-- Camera Add Modal -->
+        <div id="cameraModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+            <div class="bg-white p-6 rounded-lg w-96">
+                <h3 class="text-xl font-semibold mb-4">Add New Camera</h3>
+                <form id="cameraForm">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 mb-1">Camera Name</label>
+                        <input type="text" name="name" class="w-full border rounded px-3 py-2" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 mb-1">Camera Type</label>
+                        <select name="type" class="w-full border rounded px-3 py-2" required>
+                            <option value="usb">USB Camera</option>
+                            <option value="rtsp">IP Camera (RTSP)</option>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 mb-1">Source</label>
+                        <input type="text" name="source" class="w-full border rounded px-3 py-2" 
+                               placeholder="Device index (0,1,..) or RTSP URL" required>
+                    </div>
+                    <div class="flex justify-end space-x-2">
+                        <button type="button" id="cancelCameraBtn" class="bg-gray-500 text-white px-4 py-2 rounded">Cancel</button>
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Add Camera</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
